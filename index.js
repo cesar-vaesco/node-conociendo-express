@@ -1,25 +1,31 @@
-/* const http = require('http');
-
-const server = http.createServer((req, res) => {
-    res.status = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello world');
-});
-
-server.listen(3000, () => {
-    console.log('Server on port 3000')
-
-}) */
-
 const express = require('express');
+const morgan = require('morgan');
+require('colors');
 
 const app = express();
 
-app.get('/', (req, res) => {
 
+
+
+// Middlewares
+app.use(morgan('dev'));
+
+app.get('/', (req, res) => {
     res.send('Hello World!!');
 });
 
+app.get('/about', (req, res) => {
+    res.send('About me');
+});
+
+app.get('/contact', (req, res) => {
+    res.send('Contact me');
+});
+
+app.get('/test', (req, res) => {
+    res.send('<h1>TEST!!</h1>');
+});
+
 app.listen(3000, () => {
-    console.log(`Server started on port 3000`);
+    console.log(`\n- Server started on port 3000`.america, '\n- URL: http://localhost:3000\n'.cyan.bold);
 });
