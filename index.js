@@ -23,6 +23,12 @@ app.post('/user', (req, res) => {
     res.send('Petición post recibida');
 });
 
+app.post('/user/:id', (req, res) => {
+    console.log(req.body);
+    console.log(req.params);
+    res.send('Petición post recibida');
+});
+
 app.put('/contact', (req, res) => {
     res.send('Petición UPDATE recibida');
 });
