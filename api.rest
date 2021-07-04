@@ -6,7 +6,10 @@ GET http://localhost:3000/ HTTP/1.1
 ##post
 POST http://localhost:3000/about HTTP/1.1
 content-type: application/json
-
+{
+    "nombre": "César",
+    "apellido": "Vargas"
+}
 
 ##UPDATE
 PUT http://localhost:3000/contact HTTP/1.1

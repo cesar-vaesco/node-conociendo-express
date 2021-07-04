@@ -9,6 +9,7 @@ const app = express();
 
 // Middlewares
 app.use(morgan('dev'));
+app.use(express.json());
 
 app.get('/user', (req, res) => {
     res.json({
@@ -17,7 +18,8 @@ app.get('/user', (req, res) => {
     });
 });
 
-app.post('/about', (req, res) => {
+app.post('/user', (req, res) => {
+    console.log(req.body);
     res.send('Petición post recibida');
 });
 
