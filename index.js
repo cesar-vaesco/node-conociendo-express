@@ -29,12 +29,14 @@ app.post('/user/:id', (req, res) => {
     res.send('Petición post recibida');
 });
 
-app.put('/contact', (req, res) => {
-    res.send('Petición UPDATE recibida');
+app.put('/user/:id', (req, res) => {
+    console.log(req.body);
+    res.send(`Información del usuario ${req.body.nombre} y su id ${req.params.id} ha sido actualizada`);
 });
 
-app.delete('/test', (req, res) => {
-    res.send('<h1>Petición delerte recibida </h1>');
+app.delete('/user/:id', (req, res) => {
+    console.log(req.body);
+    res.send(`El usuario con el id ${req.params.id} a sido eliminado`);
 });
 
 app.listen(3000, () => {
