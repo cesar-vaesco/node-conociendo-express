@@ -5,7 +5,10 @@ require('colors');
 const app = express();
 
 
-
+app.all('/user', (req, res, next) => {
+    console.log('Por aquí paso....');
+    next();
+});
 
 // Middlewares
 app.use(morgan('dev'));
