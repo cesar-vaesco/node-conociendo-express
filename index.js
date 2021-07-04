@@ -10,20 +10,23 @@ const app = express();
 // Middlewares
 app.use(morgan('dev'));
 
-app.get('/', (req, res) => {
-    res.send('Hello World!!');
+app.get('/user', (req, res) => {
+    res.json({
+            "nombre":"César",
+            "apellido":"Vargas"
+    });
 });
 
-app.get('/about', (req, res) => {
-    res.send('About me');
+app.post('/about', (req, res) => {
+    res.send('Petición post recibida');
 });
 
-app.get('/contact', (req, res) => {
-    res.send('Contact me');
+app.put('/contact', (req, res) => {
+    res.send('Petición UPDATE recibida');
 });
 
-app.get('/test', (req, res) => {
-    res.send('<h1>TEST!!</h1>');
+app.delete('/test', (req, res) => {
+    res.send('<h1>Petición delerte recibida </h1>');
 });
 
 app.listen(3000, () => {
