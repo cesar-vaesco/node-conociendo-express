@@ -14,6 +14,10 @@ function logguer(req, res, next) {
     next();
 }
 
+//settings - Configuraciones
+app.set('appName', '\nPráctica de César!!!');
+app.set('port', 4500);
+
 
 // Middlewares -- procesando datos antes de que lleguen a las rutas
 app.use(morgan('dev'));
@@ -57,6 +61,7 @@ app.delete('/user/:id', (req, res) => {
 
 app.use(express.static('public'));
 
-app.listen(3000, () => {
-    console.log(`\n- Server started on port 3000`.america, '\n- URL: http://localhost:3000\n'.cyan.bold);
+app.listen(app.get('port'), () => {
+    console.log(app.get('appName'));
+    console.log(`\n- Server started on port ${app.get('port')}`.green, `\n- URL: http://localhost:${app.get('port')}\n`.cyan.bold);
 });
