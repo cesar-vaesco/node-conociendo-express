@@ -1,0 +1,5 @@
+<% persona.forEach( function (persona) {%>
+            <li>
+                <%=persona.nombre %>
+            </li>
+            <% })%>

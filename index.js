@@ -9,7 +9,7 @@ const app = express();
 // función que sirve de middleware
 function logguer(req, res, next) {
     /* console.log('Petición recibida...'); */
-    console.log( `Ejemplo de middleware => Ruta recibida: ${req.protocol}://${req.get('host')}${req.originalUrl}`.cyan);
+    console.log(`Ejemplo de middleware => Ruta recibida: ${req.protocol}://${req.get('host')}${req.originalUrl}`.cyan);
 
     next();
 }
@@ -17,6 +17,7 @@ function logguer(req, res, next) {
 //settings - Configuraciones
 app.set('appName', '\nPráctica de César!!!');
 app.set('port', 4500);
+app.set('view engine', 'ejs');
 
 
 // Middlewares -- procesando datos antes de que lleguen a las rutas
@@ -29,11 +30,17 @@ app.all('/user', (req, res, next) => {
     next();
 });
 
+
+app.get('/', (req, res) => {
+    const data = [{ nombre: 'César' }, { nombre: 'Vero' }, { nombre: 'Gloria' }, { nombre: 'Vanessa' }, { nombre: 'Aurelio' }];
+    res.render('index.ejs', { personas: data });
+});
+
 // Routes
 app.get('/user', (req, res) => {
     res.json({
-            "nombre":"César",
-            "apellido":"Vargas"
+        "nombre": "César",
+        "apellido": "Vargas"
     });
 });
 
